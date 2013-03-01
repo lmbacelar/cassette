@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: cassette_development
+  pool: 5
+  username: # fill in username
+  password: # fill in password
+
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: cassette_test
+  pool: 5
+  username: # fill in username
+  password: # fill in password
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: cassette_production
+  pool: 5
+  username: # fill in username
+  password: # fill in password
+
+cucumber:
+  <<: *test
