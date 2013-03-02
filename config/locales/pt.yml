@@ -55,6 +55,7 @@ pt:
     attributes:
       instrument:
         name: 'Nome'
+        description: 'Descrição'
       user:
         email: 'Email'
         name: 'Nome'

@@ -1,20 +1,20 @@
-Given /^I have this (.*) named (.*)$/ do |model, name|
-  model.capitalize.constantize.create!(name: name)
+Given /^I have the following (.*) records$/ do |factory, table|
+  table.hashes.each do |hash|
+    FactoryGirl.create factory, hash
+  end
 end
 
-Given /^I have these (.*) named (.*)$/ do |model, names|
-  names.split(', ').each do |name|
-    step "I have this #{model.singularize} named #{name}"
-  end
+Given /^I have one (.*) named (.*)$/ do |factory, name|
+  FactoryGirl.create factory, name: name
 end
 
 Given /^I have no (.*)/ do |model|
   model.singularize.capitalize.constantize.delete_all
 end
 
-Given /^I have only this (.*) named (.*)$/ do |model, name|
+Given /^I have only one (.*) named (.*)$/ do |model, name|
   step "I have no #{model}"
-  step "I have this #{model} named #{name}"
+  step "I have one #{model} named #{name}"
 end
 
 Then /^I should have (\d+) (.*)s?$/ do |count, model|

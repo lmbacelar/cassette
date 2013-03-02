@@ -4,11 +4,13 @@
   %thead
     %tr
       %th= Instrument.human_attribute_name :name
+      %th= Instrument.human_attribute_name :description
       %th= t 'actions.actions'
   %tbody
     - @instruments.each do |instrument|
       %tr
         %td= link_to instrument.name, instrument, rel: 'tooltip', title: t('actions.show')
+        %td= instrument.description
         %td
           = link_to t('actions.edit'), edit_instrument_path(instrument), class: 'btn btn-mini'
           = link_to t('actions.destroy'), instrument, confirm: t('actions.confirm'), method: :delete, class: 'btn btn-mini btn-danger'

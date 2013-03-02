@@ -22,8 +22,9 @@ end
 
 group :test do
   gem 'cucumber-rails'
-  gem 'database_cleaner'
+  gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 group :development do

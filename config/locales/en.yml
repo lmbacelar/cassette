@@ -55,6 +55,7 @@ en:
     attributes:
       instrument:
         name: 'Name'
+        description: 'Description'
       user:
         email: 'Email'
         name: 'Name'
