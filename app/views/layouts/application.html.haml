@@ -20,8 +20,7 @@
         %a.brand{ href: '#' }= t '.name'
         .nav-collapse
           %ul.nav
-            -# Section.roots.order(:position).each do |section|
-              %li= link_to section.acronym, section, rel: 'tooltip', data: { title: section.name, placement: 'bottom' }
+            %li= link_to Instrument.model_name.human.pluralize, instruments_path
 
   .container
     - flash.each do |name, msg|
