@@ -1,57 +1,42 @@
 class InstrumentsController < ApplicationController
+  respond_to :html, :json, :xml
+
   def index
     @instruments = Instrument.all
+    respond_with @instruments
   end
 
   def show
     @instrument = Instrument.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.json { render json: @instrument }
-    end
+    respond_with @instrument
   end
    
   def new
     @instrument = Instrument.new
+    respond_with @instrument
   end
 
   def edit
     @instrument = Instrument.find(params[:id])
+    respond_with @instrument
   end
 
   def create
     @instrument = Instrument.new(params[:instrument])
-    respond_to do |format|
-      if @instrument.save
-        format.html { redirect_to @instrument, notice: "#{Instrument.model_name.human} #{t 'flash.notice.create'}" }
-        format.json { render json: @instrument, status: :created, location: @instrument }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @instrument.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = "#{Instrument.model_name.human} #{t 'flash.notice.create'}" if @instrument.save
+    respond_with @instrument
   end
 
   def update
     @instrument = Instrument.find(params[:id])
-
-    respond_to do |format|
-      if @instrument.update_attributes(params[:instrument])
-        format.html { redirect_to @instrument, notice: "#{Instrument.model_name.human} #{t 'flash.notice.update'}" }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @instrument.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = "#{Instrument.model_name.human} #{t 'flash.notice.update'}" if @instrument.update_attributes(params[:instrument])
+    respond_with @instrument
   end
 
   def destroy
     @instrument = Instrument.find(params[:id])
     @instrument.destroy
-    respond_to do |format|
-      format.html { redirect_to instruments_url, notice: "#{Instrument.model_name.human} #{t 'flash.notice.destroy'}" }
-      format.json { head :no_content }
-    end
+    flash[:notice] = "#{Instrument.model_name.human} #{t 'flash.notice.destroy'}"
+    respond_with @instrument
   end
 end
