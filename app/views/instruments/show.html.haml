@@ -1,0 +1,10 @@
+=content_for :sidebar do
+  %h3= t 'sidebar.table_of_contents'
+
+%p
+  %h2= @instrument.name
+
+.form-actions
+  = link_to t('actions.back'), instruments_path, class: 'btn'
+  = link_to t('actions.edit'), edit_instrument_path(@instrument), class: 'btn'
+  = link_to t('actions.destroy'), @instrument, confirm: t('actions.confirm'), method: :delete, class: 'btn btn-danger'

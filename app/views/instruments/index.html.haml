@@ -1,0 +1,17 @@
+%h1 Listing instruments
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= Instrument.human_attribute_name :name
+      %th= t 'actions.actions'
+  %tbody
+    - @instruments.each do |instrument|
+      %tr
+        %td= link_to instrument.name, instrument, rel: 'tooltip', title: t('actions.show')
+        %td
+          = link_to t('actions.edit'), edit_instrument_path(instrument), class: 'btn btn-mini'
+          = link_to t('actions.destroy'), instrument, confirm: t('actions.confirm'), method: :delete, class: 'btn btn-mini btn-danger'
+
+= link_to "#{t('actions.new')} #{Instrument.model_name.human}", new_instrument_path, class: 'btn btn-primary'
+

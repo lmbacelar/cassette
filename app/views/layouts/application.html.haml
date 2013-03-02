@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %title= t '.name'
+    /[if lt IE 9]
+      %script{ src: 'http://html5shim.googlecode.com/svn/trunk/html5.js', type: 'text/javascript' }
+
+    = stylesheet_link_tag     'application', media: 'all'
+    = javascript_include_tag  'application'
+    = csrf_meta_tags
+  %meta{ name:'viewport', content:'width=device-width, initial-scale=1.0' }
+
+  .navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+      .container
+        %a.btn.btn-navbar{ 'data-target' => '.nav-collapse', 'data-toggle' => 'collapse' }
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.brand{ href: '#' }= t '.name'
+        .nav-collapse
+          %ul.nav
+            -# Section.roots.order(:position).each do |section|
+              %li= link_to section.acronym, section, rel: 'tooltip', data: { title: section.name, placement: 'bottom' }
+
+  .container
+    - flash.each do |name, msg|
+      .alert.fade.in{ class: "alert-#{ name == :notice ? 'success' : 'error'}" }
+        %a.close{ 'data-dismiss' => 'alert' } ×
+        = msg
+    .row
+      .span9
+        = yield
+      .span3
+        = yield :sidebar
