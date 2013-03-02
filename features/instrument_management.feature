@@ -1,4 +1,4 @@
-Feature: A metrologist can record instrument readings
+Feature: A metrologist can manage instruments
 
   Scenario: Instruments list
     Given I have these instruments named Sprt01, Rtd01
