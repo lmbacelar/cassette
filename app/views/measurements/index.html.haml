@@ -1,5 +1,7 @@
 %h1= "Listing measurements for #{@instrument}"
 
+=content_tag :div, '', id: 'measurements_chart', data: { measurements: @measurements }
+
 %table.table.table-striped
   %thead
     %tr
