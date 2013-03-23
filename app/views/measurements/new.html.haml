@@ -1,0 +1,11 @@
+= simple_form_for [@instrument, @measurement], html: {class: 'form-horizontal'} do |f|
+  %fieldset
+    %legend= "#{t("actions.#{controller.action_name.downcase}")} #{Measurement.model_name.human} #{t("general.for")} #{@instrument}"
+    = f.input :timestamp, as: :string, input_html: { class: 'span5' }
+    = f.input :value, input_html: { class: 'span5' }
+    = f.input :unit, input_html: { class: 'span2' }
+
+    .form-actions
+      = f.button :submit, class: 'btn-primary'
+      = link_to t('actions.cancel'), instrument_measurements_path(@instrument), class: 'btn'
+

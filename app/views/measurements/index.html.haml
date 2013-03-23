@@ -1,0 +1,20 @@
+%h1= "Listing measurements for #{@instrument}"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= Measurement.human_attribute_name :timestamp
+      %th= "#{Measurement.human_attribute_name :value}"
+      %th= "#{Measurement.human_attribute_name :unit}"
+      %th= t 'actions.actions'
+  %tbody
+    - @measurements.each do |measurement|
+      %tr
+        %td= measurement.timestamp
+        %td= measurement.value
+        %td= measurement.unit
+        %td
+          = link_to t('actions.destroy'), measurement, confirm: t('actions.confirm'), method: :delete, class: 'btn btn-mini btn-danger'
+
+= link_to "#{t('actions.new')} #{Measurement.model_name.human}", new_instrument_measurement_path(@instrument), class: 'btn btn-primary'
+
