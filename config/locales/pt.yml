@@ -8,6 +8,10 @@ pt:
     index:
       title: 'Lista de instrumentos'
 
+  measurements:
+    index:
+      title: 'Lista de medições para'
+
   actions:
     actions: 'Ações'
     new: 'Novo'
@@ -90,6 +94,8 @@ pt:
   general:
     all: 'todas'
     for: 'para'
+    table: 'Tabela'
+    chart: 'Grafico'
 
   date:
     abbr_day_names:

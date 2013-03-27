@@ -8,6 +8,10 @@ en:
     index:
       title: 'Listing instruments'
 
+  measurements:
+    index:
+      title: 'Listing measurements for'
+
   actions:
     actions: 'Actions'
     new: 'New'
@@ -90,6 +94,8 @@ en:
   general:
     all: 'all'
     for: 'for'
+    table: 'Table'
+    chart: 'Chart'
 
   date:
     abbr_day_names:
