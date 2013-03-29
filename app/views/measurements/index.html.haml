@@ -1,5 +1,12 @@
 %h1= "#{t('.title')} #{@instrument}"
 
+.pagination
+  %ul
+    %li{class: "#{'active' if @measurements.first_page?}"}
+      = link_to '<', @measurements.first_page? ? '#' : params.merge(page: params[:page].to_i - 1) 
+    %li{class: "#{'active' if @measurements.last_page?}"}
+      = link_to '>', @measurements.last_page? ? '#' : params.merge(page: params[:page].to_i + 1) 
+
 = tabs do |tabs|
   - tabs.pane t('general.chart') do
     = content_tag :div, '', id: 'measurements_chart', data: { measurements: @measurements }

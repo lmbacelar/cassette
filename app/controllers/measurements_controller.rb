@@ -4,7 +4,7 @@ class MeasurementsController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    @measurements = @instrument.measurements.all
+    @measurements = @instrument.measurements.timelined.page(params[:page]).per(10)
     respond_with @measurements
   end
 
