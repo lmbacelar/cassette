@@ -1,8 +1,8 @@
 class InstrumentsController < ApplicationController
-  respond_to :html, :json, :xml
+  respond_to :html, :json, :xml, :js
 
   def index
-    @instruments = Instrument.all
+    @instruments = Instrument.page(params[:page]).per(10)
     respond_with @instruments
   end
 
