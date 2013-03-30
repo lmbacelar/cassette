@@ -1,8 +1,12 @@
 class InstrumentsController < ApplicationController
   respond_to :html, :json, :xml, :js
 
+  helper_method :sort_column, :sort_direction
+
   def index
-    @instruments = Instrument.page(params[:page]).per(10)
+    @instruments = Instrument.search(params[:search])
+                             .page(params[:page]).per(10)
+                             .order(sort_column + ' ' + sort_direction)
     respond_with @instruments
   end
 
@@ -38,5 +42,14 @@ class InstrumentsController < ApplicationController
     @instrument.destroy
     flash[:notice] = "#{Instrument.model_name.human} #{t 'flash.notice.destroy'}"
     respond_with @instrument
+  end
+
+  private
+  def sort_column
+    Instrument.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+    
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

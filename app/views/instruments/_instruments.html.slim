@@ -1,8 +1,10 @@
+= hidden_field_tag :direction, params[:direction]
+= hidden_field_tag :sort, params[:sort]
 table.table.table-striped
   thead
     tr
-      th= Instrument.human_attribute_name :name
-      th= Instrument.human_attribute_name :description
+      th= sortable :name, Instrument.human_attribute_name(:name), remote: true
+      th= sortable :description, Instrument.human_attribute_name(:description), remote: true
       th= t 'actions.actions'
   tbody
     - @instruments.each do |instrument|

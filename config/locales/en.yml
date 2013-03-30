@@ -96,6 +96,7 @@ en:
     for: 'for'
     table: 'Table'
     chart: 'Chart'
+    search: 'Search'
 
   date:
     abbr_day_names:

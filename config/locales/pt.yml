@@ -96,6 +96,7 @@ pt:
     for: 'para'
     table: 'Tabela'
     chart: 'Grafico'
+    search: 'Procura'
 
   date:
     abbr_day_names:

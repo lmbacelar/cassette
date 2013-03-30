@@ -1,6 +1,10 @@
 h1= t '.title'
 
-#instruments
-  = render 'instruments'
+= form_tag instruments_path, method: 'get', id: 'instruments_search', remote: true, class: 'form-search' do
+  .input-append
+    = text_field_tag :search, params[:search], class: 'span4 search-query'
+    = button_tag icon_tag('icon-search', t('general.search')), name: nil, class: 'btn'
+  #instruments
+    = render 'instruments'
 
 = link_to "#{t('actions.new')} #{Instrument.model_name.human}", new_instrument_path, class: 'btn btn-primary'
