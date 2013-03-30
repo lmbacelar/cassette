@@ -1,5 +1,5 @@
 class InstrumentsController < ApplicationController
-  respond_to :html, :json, :xml, :js
+  respond_to :html, :json, :xml, :csv, :js
 
   helper_method :sort_column, :sort_direction
 
