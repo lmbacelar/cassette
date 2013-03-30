@@ -1,0 +1,13 @@
+table
+  tr
+    th ID
+    th Name
+    th Description
+    th URL
+  - @instruments.each do |instrument|
+    tr
+      td= instrument.id
+      td= instrument.name
+      td= instrument.description
+      td= instrument_url(instrument)
+

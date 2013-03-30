@@ -1,7 +1,8 @@
 CSV.generate do |csv|
-  csv << ["Name", "Description", "URL"]
+  csv << ["ID", "Name", "Description", "URL"]
   @instruments.each do |instrument|
     csv << [
+      instrument.id,
       instrument.name,
       instrument.description,
       instrument_url(instrument)
