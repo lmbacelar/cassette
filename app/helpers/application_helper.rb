@@ -12,6 +12,6 @@ module ApplicationHelper
       direction = 'asc'
       icon = 'icon-arrow-up'
     end
-    link_to icon_tag(icon, title || column.titleize), params.merge(sort: column, direction: direction, page: nil)
+    link_to icon_tag(icon, title || column.titleize), params.merge(sort: column, direction: direction, page: nil), options
   end
 end
