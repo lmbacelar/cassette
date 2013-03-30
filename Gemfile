@@ -16,7 +16,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'haml-rails'
+  gem 'slim-rails'
   gem 'capybara'
 end
 
