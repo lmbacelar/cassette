@@ -4,7 +4,7 @@ class InstrumentsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @instruments = Instrument.search(params[:search])
+    @instruments = Instrument.text_search(params[:search])
                              .page(params[:page]).per(10)
                              .order(sort_column + ' ' + sort_direction)
     respond_with @instruments
