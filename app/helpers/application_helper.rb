@@ -1,7 +1,6 @@
 module ApplicationHelper
   def icon_tag icon, text
-    text ||= ''
-    icon ? raw("<i class='#{icon}'> #{text}</i>") : text
+    icon ? raw("<i class='#{icon}'></i> #{text if text}") : text
   end
 
   def sortable column, title=nil, options={}
