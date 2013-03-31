@@ -1,11 +1,13 @@
 class InstrumentsController < ApplicationController
-  respond_to :html, :json, :xml, :csv, :xls, :js
+  respond_to :html
+  respond_to :json, :xml, except: [:new, :edit]
+  respond_to :csv, :xls, :js, only: :index
 
   helper_method :sort_column, :sort_direction
 
   def index
     @instruments = Instrument.text_search(params[:search])
-                             .page(params[:page]).per(10)
+                             .page(params[:page]).per(per_page)
                              .order(sort_column + ' ' + sort_direction)
     respond_with @instruments
   end
@@ -51,5 +53,9 @@ class InstrumentsController < ApplicationController
     
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  def per_page
+    %w{csv xls}.include?(params[:format]) ? nil : 10
   end
 end

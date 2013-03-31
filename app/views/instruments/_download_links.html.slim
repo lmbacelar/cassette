@@ -1,0 +1,6 @@
+/ TODO: Extract to Helper method. Generalize behaviour.
+#download_links
+  | Download: 
+  = link_to 'CSV', instruments_path(params.merge(format: :csv))
+  ||
+  = link_to 'XLS', instruments_path(params.merge(format: :xls))

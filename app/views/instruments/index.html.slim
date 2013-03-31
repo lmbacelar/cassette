@@ -4,7 +4,9 @@ h1= t '.title'
   .input-append
     = text_field_tag :search, params[:search], class: 'span4 search-query'
     = button_tag icon_tag('icon-search', t('general.search')), name: nil, class: 'btn'
-  #instruments
-    = render 'instruments'
+  
+  = render 'sort_params'
+  = render 'download_links'
+  = render 'instruments'
 
 = link_to "#{t('actions.new')} #{Instrument.model_name.human}", new_instrument_path, class: 'btn btn-primary'
