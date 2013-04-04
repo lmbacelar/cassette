@@ -1,10 +1,10 @@
 class MeasurementsController < ApplicationController
   before_filter :load_instrument, except: [:destroy]
 
-  respond_to :html, :json, :xml
+  respond_to :html, :json, :xml, :js
 
   def index
-    @measurements = @instrument.measurements.timelined.page(params[:page]).per(10)
+    @measurements = @instrument.measurements.timelined.page(params[:page]).per(20)
     respond_with @measurements
   end
 

@@ -1,0 +1,5 @@
+| $('#measurements').append("#{j render(@measurements)}");
+- if @measurements.current_page < @measurements.num_pages
+  | $('.pagination').replaceWith("#{j paginate(@measurements)}");
+- else
+  | $('.pagination').remove();

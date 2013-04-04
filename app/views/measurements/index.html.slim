@@ -1,31 +1,20 @@
 h1= t('.title') + ' ' + @instrument.to_s
 
-.pagination
-  ul
-    li class='#{'active' if @measurements.first_page?}'
-      = link_to '<', @measurements.first_page? ? '#' : params.merge(page: params[:page].to_i - 1)
-    li class='#{'active' if @measurements.last_page?}'
-      = link_to '>', @measurements.last_page? ? '#' : params.merge(page: params[:page].to_i + 1)
-
 = tabs do |tabs|
-  - tabs.pane t('general.chart') do
-    = content_tag :div, '', id: 'measurements_chart', data: { measurements: @measurements }
-
   - tabs.pane t('general.table') do
     table.table.table-striped
       thead
         tr
-          th=' Measurement.human_attribute_name :timestamp
+          th= Measurement.human_attribute_name :timestamp
           th= Measurement.human_attribute_name :value
           th= Measurement.human_attribute_name :unit
           th= t 'actions.actions'
-      tbody
-        - @measurements.each do |measurement|
-          tr
-            td= measurement.timestamp
-            td= measurement.value
-            td= measurement.unit
-            td= link_to t('actions.destroy'), measurement, confirm: t('actions.confirm'), method: :delete, class: 'btn btn-mini btn-danger'
+      tbody#measurements
+        = render @measurements
+    = paginate @measurements
+
+  - tabs.pane t('general.chart') do
+    = content_tag :div, '', id: 'measurements_chart', data: { measurements: @measurements }
 
 = link_to "#{t('actions.new')} #{Measurement.model_name.human}", new_instrument_measurement_path(@instrument), class: 'btn btn-primary'
 

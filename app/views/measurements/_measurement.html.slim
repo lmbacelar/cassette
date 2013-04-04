@@ -1,0 +1,5 @@
+tr
+  td= measurement.timestamp
+  td= measurement.value
+  td= measurement.unit
+  td= link_to t('actions.destroy'), measurement, confirm: t('actions.confirm'), method: :delete, class: 'btn btn-mini btn-danger'
